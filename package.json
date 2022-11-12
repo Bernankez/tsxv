@@ -1,17 +1,19 @@
 {
-  "name": "ts-template",
+  "name": "tsxv",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.0",
   "description": "",
-  "author": "Cole <bernankez@qq.com>",
+  "author": {
+    "name": "Cole"
+  },
   "license": "MIT",
-  "homepage": "https://github.com/bernankez/TSTemplate#readme",
+  "homepage": "https://github.com/Bernankez/tsx-vue#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernankez/TSTemplate.git"
+    "url": "git+https://github.com/Bernankez/tsx-vue.git"
   },
-  "bugs": "https://github.com/bernankez/TSTemplate/issues",
+  "bugs": "https://github.com/Bernankez/tsx-vue/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
