@@ -53,11 +53,13 @@
   },
   "dependencies": {
     "@esbuild-kit/cjs-loader": "^2.4.0",
+    "@esbuild-kit/core-utils": "^3.0.0",
     "@esbuild-kit/esm-loader": "^2.5.0",
-    "esbuild": "^0.15.13"
+    "esbuild": "^0.15.13",
+    "get-tsconfig": "^4.2.0"
   },
   "devDependencies": {
-    "@bernankez/eslint-config": "^0.0.4",
+    "@bernankez/eslint-config": "^0.1.0",
     "@types/cross-spawn": "^6.0.2",
     "@types/node": "^18.7.19",
     "bumpp": "^8.2.1",
