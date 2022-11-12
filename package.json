@@ -18,22 +18,23 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "types": "./dist/loader.d.ts",
+      "require": "./dist/loader.cjs",
+      "import": "./dist/loader.mjs"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/loader.mjs",
+  "module": "./dist/loader.mjs",
+  "types": "./dist/loader.d.ts",
   "typesVersions": {
     "*": {
       "*": [
         "./dist/*",
-        "./dist/index.d.ts"
+        "./dist/loader.d.ts"
       ]
     }
   },
+  "bin": "./dist/cli.cjs",
   "files": [
     "dist"
   ],
@@ -47,9 +48,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . --fix",
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.0",
+    "@esbuild-kit/esm-loader": "^2.5.0",
+    "esbuild": "^0.15.13"
   },
   "devDependencies": {
     "@bernankez/eslint-config": "^0.0.4",
@@ -74,10 +79,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "dependencies": {
-    "@esbuild-kit/cjs-loader": "^2.4.0",
-    "@esbuild-kit/esm-loader": "^2.5.0",
-    "esbuild": "^0.15.13"
   }
 }
