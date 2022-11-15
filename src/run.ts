@@ -1,7 +1,11 @@
 import type { StdioOptions } from "node:child_process";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import path, { dirname } from "node:path";
 import spawn from "cross-spawn";
 import { require } from "./require";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export function run(
   argv: string[],
@@ -29,10 +33,10 @@ export function run(
     process.execPath,
     [
       "--require",
-      require.resolve("./preflight.cjs"),
+      require.resolve(path.resolve(__dirname, "./preflight.cjs")),
 
       "--loader",
-      pathToFileURL(require.resolve("./loader.cjs")).toString(),
+      pathToFileURL(require.resolve(path.resolve(__dirname, "./loader.cjs"))).toString(),
 
       ...argv,
     ],
