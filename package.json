@@ -8,12 +8,12 @@
     "name": "Cole"
   },
   "license": "MIT",
-  "homepage": "https://github.com/Bernankez/tsx-vue#readme",
+  "homepage": "https://github.com/Bernankez/tsxv#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bernankez/tsx-vue.git"
+    "url": "git+https://github.com/Bernankez/tsxv.git"
   },
-  "bugs": "https://github.com/Bernankez/tsx-vue/issues",
+  "bugs": "https://github.com/Bernankez/tsxv/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
