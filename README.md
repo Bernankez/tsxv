@@ -6,6 +6,9 @@ Run Typescript & ESM files and automatically compile imported Vue files. Forked 
 **Use for [Bobo Style](https://github.com/Bernankez/bobo-style)**
 
 ## Usage
+
+**Notice:** If you are compiling Vue files, manually install Vue as a dependency.
+
 Install it as a development dependency:
 ```
 npm install -D tsxv
