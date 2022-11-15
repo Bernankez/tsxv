@@ -1,5 +1,6 @@
 import { constants as osConstants } from "os";
 import "./suppress-warnings.ts";
+import { require } from "./require";
 
 /**
  * Hook require() to transform to CJS
@@ -25,20 +26,17 @@ if (process.send) {
      * Since we're setting a custom signal handler, we need to emulate the
      * default behavior when there are no other handlers set
      */
-    if (process.listenerCount(signal) === 0)
-      process.exit(128 + osConstants.signals[signal]);
+    if (process.listenerCount(signal) === 0) { process.exit(128 + osConstants.signals[signal]); }
   }
 
   const relaySignals = ["SIGINT", "SIGTERM"] as const;
-  for (const signal of relaySignals)
-    process.on(signal, relaySignal);
+  for (const signal of relaySignals) { process.on(signal, relaySignal); }
 
   // Reduce the listenerCount to hide the one set above
   const { listenerCount } = process;
   process.listenerCount = function (eventName, ...args) {
     let count = Reflect.apply(listenerCount, this, [eventName, ...args]);
-    if (relaySignals.includes(eventName as any))
-      count -= 1;
+    if (relaySignals.includes(eventName as any)) { count -= 1; }
 
     return count;
   };

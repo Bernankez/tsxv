@@ -8,8 +8,7 @@ export const ignoreAfterArgument = (): TypeFlagOptions["ignore"] => {
   let ignore = false;
 
   return (type) => {
-    if (ignore)
-      return true;
+    if (ignore) { return true; }
 
     const isArgument = type === "argument";
     if (isArgument || type === "unknown-flag") {

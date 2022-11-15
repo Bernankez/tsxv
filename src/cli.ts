@@ -35,8 +35,7 @@ cli({
 }, (argv) => {
   if (argv.flags.version) {
     process.stdout.write(`tsxv v${version}\nnode `);
-  }
-  else if (argv.flags.help) {
+  } else if (argv.flags.help) {
     argv.showHelp({
       description: "Node.js runtime enhanced with esbuild for loading TypeScript & ESM",
     });
@@ -78,8 +77,7 @@ cli({
        * If child didn't receive a signal, it was sent to the parent
        * directly via kill PID. Relay it to child.
        */
-    if (!message)
-      childProcess.kill(signal);
+    if (!message) { childProcess.kill(signal); }
   };
 
   process.on("SIGINT", relaySignal);

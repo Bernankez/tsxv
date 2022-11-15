@@ -12,8 +12,7 @@ process.emit = function (event: "warning", warning: Error, ...args) {
   if (
     event === "warning"
     && ignoreWarnings.has(warning.message)
-  )
-    return;
+  ) { return; }
 
   return Reflect.apply(emit, this, [event, warning, ...args]);
 };

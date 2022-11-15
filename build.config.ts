@@ -6,12 +6,15 @@ export default defineBuildConfig({
     "src/cli",
     "src/loader",
     "src/suppress-warnings",
-    "src/loader",
+    "src/require",
   ],
-  declaration: true,
+  declaration: false,
   clean: true,
   rollup: {
     emitCJS: true,
+    esbuild: {
+      minify: true,
+    },
   },
   failOnWarn: false,
 });

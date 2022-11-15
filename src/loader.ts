@@ -6,9 +6,9 @@ import type { TransformOptions } from "esbuild";
 import { transformSync } from "esbuild";
 import { transformSync as _transformSync, compareNodeVersion, installSourceMapSupport, transformDynamicImport } from "@esbuild-kit/core-utils";
 import { getTsconfig, parseTsconfig } from "get-tsconfig";
-
 // @ts-expect-error no types necessary
 import * as esmLoader from "@esbuild-kit/esm-loader";
+import { require } from "./require";
 
 require("@esbuild-kit/cjs-loader");
 
@@ -61,10 +61,8 @@ function transformer(module: Module, filePath: string) {
 
   if (nodeSupportsImport) {
     const transformed = transformDynamicImport(filePath, code);
-    if (transformed)
-      code = applySourceMap(transformed, filePath);
-  }
-  else {
+    if (transformed) { code = applySourceMap(transformed, filePath); }
+  } else {
     const transformed = _transformSync(
       source,
       filePath,
@@ -94,13 +92,13 @@ type ModuleFormat =
   | "vue";
 
 interface Resolved {
-  url: string
-  format: ModuleFormat
+  url: string;
+  format: ModuleFormat;
 }
 
 interface Context {
-  conditions: string[]
-  parentURL: string | undefined
+  conditions: string[];
+  parentURL: string | undefined;
 }
 
 type Resolve = (specifier: string, context: Context, defaultResolve: Resolve) => MaybePromise<Resolved>;
@@ -109,13 +107,13 @@ type Load = (
   url: string,
   context:
   {
-    format: string
-    importAssertions: Record<string, string>
+    format: string;
+    importAssertions: Record<string, string>;
   },
   defaultLoad: Load
 ) => MaybePromise<{
-  format: string
-  source: string | ArrayBuffer | SharedArrayBuffer | Uint8Array
+  format: string;
+  source: string | ArrayBuffer | SharedArrayBuffer | Uint8Array;
 }>;
 
 export const resolve: Resolve = async function (specifier, context, defaultResolve) {
@@ -132,7 +130,7 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
 export const load: Load = async function (url, context, defaultLoad) {
   const loaded = await defaultLoad(url, context, defaultLoad);
 
-  if (!loaded.source) return loaded;
+  if (!loaded.source) { return loaded; }
 
   if (loaded.format === "vue") {
     const source = readFileSync(fileURLToPath(url), "utf-8");
