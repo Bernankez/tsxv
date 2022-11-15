@@ -4,14 +4,16 @@ export default defineBuildConfig({
   entries: [
     "src/preflight",
     "src/cli",
-    "src/loader",
     "src/suppress-warnings",
-    "src/require",
+    "src/loader",
+    "src/cjs-loader",
+    "src/esm-loader",
   ],
   declaration: false,
   clean: true,
   rollup: {
     emitCJS: true,
+    inlineDependencies: true,
     esbuild: {
       minify: true,
     },
